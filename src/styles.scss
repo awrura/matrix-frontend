@@ -1,0 +1,17 @@
+p {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+svg-icon {
+  width: 24px;
+  height: 24px;
+
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+}
