@@ -1,0 +1,61 @@
+<section
+  class="page"
+  (mousedown)="isMouseDown.set(true)"
+  (mouseup)="isMouseDown.set(false)"
+>
+  <div class="settings">
+    <div class="instruments">
+      <button
+        class="instrument"
+        [class.selected]="isBrushSelected()"
+        (click)="isBrushSelected.set(true)"
+      >
+        <svg-icon src="assets/icon/brush.svg" />
+      </button>
+
+      <button
+        class="instrument"
+        [class.selected]="!isBrushSelected()"
+        (click)="isBrushSelected.set(false)"
+      >
+        <svg-icon src="assets/icon/eraser.svg" />
+      </button>
+
+      <button class="instrument" (click)="clearMatrix()">
+        <svg-icon src="assets/icon/cross.svg" />
+      </button>
+
+      <button class="instrument" (click)="sendMatrix()">
+        <svg-icon src="assets/icon/send.svg" />
+      </button>
+    </div>
+
+    <label>
+      Выберите цвет:
+      <input
+        colorPicker
+        cpAlphaChannel="disabled"
+        class="color-picker"
+        cpOutputFormat="rgba"
+        [value]="selectedColor()"
+        [style.background]="selectedColor()"
+        [(colorPicker)]="selectedColor"
+      />
+    </label>
+  </div>
+
+  <p>Рисуйте на матрице:</p>
+  <div #matrixElement class="matrix">
+    @for (line of matrix(); track line; let i = $index) {
+      <div class="matrix-line">
+        @for (cell of line; track cell; let j = $index) {
+          <div
+            class="matrix-block"
+            [style.background]="cell"
+            (mousemove)="setColor(i, j)"
+          ></div>
+        }
+      </div>
+    }
+  </div>
+</section>

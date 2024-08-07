@@ -1,0 +1,76 @@
+.page {
+  width: calc(100vw - 80px);
+  height: calc(100vh - 80px);
+
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .settings {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .instruments {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+
+      .instrument {
+        width: 40px;
+        height: 40px;
+
+        border: 1px solid black;
+        outline: none;
+
+        &:hover {
+          background: #dadada;
+        }
+
+        &:active {
+          background: #bdbdbd;
+        }
+
+        &.selected {
+          background: gray;
+        }
+      }
+    }
+
+    .color-picker {
+      width: 200px;
+
+      margin-left: 20px;
+      outline: none;
+      border: 1px solid black;
+    }
+  }
+  .matrix {
+    width: fit-content;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 2px solid gray;
+
+    .matrix-line {
+      width: fit-content;
+      height: fit-content;
+
+      display: flex;
+      flex-direction: row;
+
+      .matrix-block {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
+
+        border: 1px solid gray;
+      }
+    }
+  }
+}
